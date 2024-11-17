@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Video</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+    }
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+    .controls button {
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay loop muted id="backgroundVideo">
+    <source src="background-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="controls">
+    <button id="toggleSound">Unmute</button>
+  </div>
+  <script>
+    const video = document.getElementById('backgroundVideo');
+    const button = document.getElementById('toggleSound');
+
+    button.addEventListener('click', () => {
+      if (video.muted) {
+        video.muted = false;
+        button.textContent = 'Mute';
+      } else {
+        video.muted = true;
+        button.textContent = 'Unmute';
+      }
+    });
+  </script>
+</body>
+</html>
